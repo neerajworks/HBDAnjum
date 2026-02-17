@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    color: white;
+    max-width: 800px;
+    z-index: 2;
+}
+
+.title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    animation: glow 2s infinite alternate;
+}
+
+.title span {
+    color: #fff700;
+}
+
+.subtitle {
+    margin-top: 20px;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.surprise-btn {
+    margin-top: 40px;
+    padding: 15px 35px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: white;
+    color: #ff4e8c;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.surprise-btn:hover {
+    transform: scale(1.1);
+    background: #fff700;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px white, 0 0 20px #ff00ff;
+    }
+    to {
+        text-shadow: 0 0 20px #fff700, 0 0 40px #ff00ff;
+    }
+}
+
+/* Balloons */
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 50px;
+    height: 70px;
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120vh); }
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10vh) rotate(0); }
+    to { transform: translateY(100vh) rotate(720deg); }
+}
+
+/* VIDEO MODAL */
+.video-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
+    z-index: 1000;
+}
+
+.video-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-modal video {
+    width: 90%;
+    max-width: 400px; /* Reel size */
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .surprise-btn {
+        padding: 12px 25px;
+    }
+}
