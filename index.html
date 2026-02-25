@@ -10,22 +10,26 @@
 
     <div class="container">
         <h1 class="title">
-            Happy Birthday <span>Anjum</span> 🎉
+            Happy Birthday <span>Arshi</span> 🎉
         </h1>
 
         <p class="subtitle">
-            Wishing you a day filled with love, laughter, and endless happiness ❤️
+            Wishing you a day filled with love, laughter, and endless happiness ❤️ <br> 
+            Stay blessed and may all your dreams come true! 🌟
         </p>
 
         <button class="surprise-btn">Click for Surprise 🎁</button>
     </div>
 
     <!-- Background Music -->
-    <audio id="bg-music" src="music.mp3" loop></audio>
+    <audio id="bg-music" src="music.mp3" loop autoplay></audio>
 
     <!-- Video Modal -->
     <div class="video-modal" id="videoModal">
-        <video id="birthdayVideo" src="video.mp4" controls></video>
+        <div class="video-wrapper">
+            <button class="close-btn" id="closeVideo">✖</button>
+            <video id="birthdayVideo" src="video.mp4" controls></video>
+        </div>
     </div>
 
     <div class="confetti-container"></div>
