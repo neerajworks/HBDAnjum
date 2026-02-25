@@ -3,6 +3,18 @@ const confettiContainer = document.querySelector(".confetti-container");
 const videoModal = document.getElementById("videoModal");
 const birthdayVideo = document.getElementById("birthdayVideo");
 const bgMusic = document.getElementById("bg-music");
+const closeBtn = document.getElementById("closeVideo");
+
+// 🎵 Try autoplay (some mobile browsers require interaction)
+window.addEventListener("load", () => {
+    bgMusic.volume = 0.5;
+    bgMusic.play().catch(() => {
+        // If autoplay blocked, play on first click anywhere
+        document.body.addEventListener("click", () => {
+            bgMusic.play();
+        }, { once: true });
+    });
+});
 
 // 🎈 Balloons
 for (let i = 0; i < 15; i++) {
@@ -17,14 +29,14 @@ for (let i = 0; i < 15; i++) {
 // 🎊 Surprise Click
 btn.addEventListener("click", () => {
 
-    // Start Music (required user interaction for mobile autoplay)
-    bgMusic.play();
+    // Stop background music immediately
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
 
-    // Disable button
     btn.disabled = true;
     btn.innerText = "Enjoy the Surprise 🎉";
 
-    // Create Confetti
+    // Confetti
     for (let i = 0; i < 150; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
@@ -40,10 +52,19 @@ btn.addEventListener("click", () => {
         }, 4000);
     }
 
-    // After confetti ends → Show Video
+    // Show Video after confetti
     setTimeout(() => {
         videoModal.classList.add("active");
         birthdayVideo.play();
     }, 4000);
 });
-c
+
+// ❌ Close Video
+closeBtn.addEventListener("click", () => {
+    birthdayVideo.pause();
+    birthdayVideo.currentTime = 0;
+    videoModal.classList.remove("active");
+
+    // Resume background music
+    bgMusic.play();
+});
